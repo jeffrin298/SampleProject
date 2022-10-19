@@ -1,6 +1,7 @@
 package com.RMP.resource_management.Controller;
 
 import com.RMP.resource_management.Model.*;
+
 import com.RMP.resource_management.Service.*;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -63,11 +64,11 @@ public class EmployeeController {
                 }
             }
         }
+        model.addAttribute("managerId", "Manager Id: "+manager.getId());
+        model.addAttribute("managerName", "Manager Name: "+manager.getName());
         model.addAttribute("manager_block", "true");
         model.addAttribute("manager", manager);
         model.addAttribute("listEmployees", filterProfiles);
-        
-        
 
         return "details";
     }
@@ -88,8 +89,6 @@ public class EmployeeController {
 //        System.out.println(managerList.get(0).getSelected());
         model.addAttribute("listManagers", managerList);
         model.addAttribute("emp_id", emp_id);
-        
-        
         return "managers";
     }
 
@@ -227,7 +226,7 @@ public class EmployeeController {
     @GetMapping("/deleteEmployee/{id}")
     public String deleteEmployee(@PathVariable(value = "id") Long id) {
         this.employeeService.deleteEmployeeById(id);
-        return "redirect:/";
+        return "availablePools";
     }
 
     @GetMapping("/reject/{id}")

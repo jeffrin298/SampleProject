@@ -13,6 +13,7 @@
     <title>Task 1</title>
 </head>
 <body>
+<span align="center"> <h1 th:text="${managerId}"></h1>    <h1 th:text="${managerName}"></h1></span>
 <div class="dropdown pull-right">
     <button class="btn btn-primary" type="button" style="width:150px;" data-toggle="dropdown">All
         <span class="caret"></span></button>
@@ -71,7 +72,7 @@
             <td th:text="${employee.RAS_Allocation}"></td>
             <td th:text="${employee.Remarks}"></td>
             <td>
-                <a class="btn btn-secondary" th:if="${employee.block} != 'true'">Block</a>
+                <a class="btn btn-secondary" th:if="${employee.block} != 'true' AND ${employee.blockCount} != 3 ">Block</a>
                 <!--                <a class="btn btn-primary" th:if="${employee.block} == 'true'" th:href="@{/updateBlock/{id}(id=${employee.id})}">Block</a>-->
                 <a class="btn btn-primary" th:if="${employee.block} == 'true' and ${manager_block} != 'true' "
                    th:href="@{/managerPage/{emp_id}(emp_id=${employee.id})}">Share</a>
@@ -79,7 +80,7 @@
                    th:href="@{/formPage/{id}(id=${employee.id})}">Block Profile</a>
                 <a class="btn btn-primary" th:if="${employee.block} == 'true' and ${manager_block} != 'true' "
                    th:href="@{/reject/{id}(id=${employee.id})}">Reject</a>
-                <a class="btn btn-secondary" th:if="${employee.block} == 'false'">On-Hold</a>
+                <a class="btn btn-secondary" th:if="${employee.blockCount} == 3">On-Hold</a>
             <td><a th:href="@{/deleteEmployee/{id}(id=${employee.id})}">Delete</a></td>
         </tr>
         </tbody>

@@ -19,6 +19,6 @@ public class ResourceManagementApplication extends SpringBootServletInitializer
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(ResourceManagementApplication.class);
 	}
-       //Hello
+       //Hello Hi
 
 }
